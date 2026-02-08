@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Mayz Kuro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --secondary-dark: #1a1a1a;
+            --accent-gold: #d4a574;
+            --accent-bronze: #8b5a2b;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+	        .logo-link {
+	    display: block;
+	}
+
+	.logo-img {
+		    height: 60px;
+		    width: auto;
+	    transition: transform 0.3s ease;
+	}
+
+	.logo-img:hover {
+	    transform: scale(1.05);
+	}
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+    padding: 10rem 2rem 6rem;
+    background: var(--primary-dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('MayzKuro-Hintergrund@2x.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.7) 100%);
+    z-index: 1;
+}
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-intro p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Band Members Section */
+        .members-section {
+            margin-top: 6rem;
+        }
+
+        .members-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .members-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-gold);
+        }
+
+        .member-card {
+            background: var(--secondary-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .member-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
+        }
+
+        .member-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 0;
+        }
+
+        .member-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-dark);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .member-card:hover .member-image {
+            transform: scale(1.05);
+        }
+
+        .member-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            min-height: 500px;
+        }
+
+        .member-info {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .member-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-bio {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .member-bio p {
+            margin-bottom: 1rem;
+        }
+
+        /* Alternate layout for odd/even cards */
+        .member-card:nth-child(even) .member-content {
+            grid-template-columns: 1fr 400px;
+        }
+
+        .member-card:nth-child(even) .member-image-wrapper {
+            order: 2;
+        }
+
+        .member-card:nth-child(even) .member-info {
+            order: 1;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 6rem 0;
+        }
+
+        .stat-card {
+            background: var(--secondary-dark);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-dark);
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .member-content,
+            .member-card:nth-child(even) .member-content {
+                grid-template-columns: 1fr;
+            }
+
+            .member-image-wrapper,
+            .member-card:nth-child(even) .member-image-wrapper {
+                order: 1;
+                min-height: 400px;
+            }
+
+            .member-info,
+            .member-card:nth-child(even) .member-info {
+                order: 2;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+		.logo-img {
+		    height: 50px;
+		}
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 5rem 2rem;
+                transition: right 0.3s ease;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .member-image-placeholder {
+                min-height: 300px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+    		<img src="MayzKuro-Logo.png" alt="Mayz Kuro" class="logo-img">
+		</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="live.html">Live</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>About the Band</h1>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <!-- Intro Section -->
+        <div class="section-intro fade-in">
+            <h2>Unsere Geschichte</h2>
+            <p>
+                Mayz Kuro ist eine innovative musikalische Kraft, die Grenzen überschreitet und neue Klangwelten erschafft. 
+                Mit einer einzigartigen Mischung aus elektronischen Elementen und organischen Sounds kreiert die Band 
+                atmosphärische Kompositionen, die den Hörer auf eine emotionale Reise mitnehmen.
+            </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card fade-in">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Albums Released</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Monthly Listeners</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Live Shows</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Countries Reached</div>
+            </div>
+        </div>
+
+        <!-- Band Members Section -->
+        <div class="members-section">
+            <h2 class="members-title">Die Band</h2>
+
+            <!-- Member 1: Mayz Kuro -->
+            <div class="member-card fade-in">
+                <div class="member-content">
+                    <div class="member-image-wrapper">
+                        <img src="mayz@2x.png" alt="Mayz Kuro" class="member-image">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Mayz Kuro</h3>
+                        <div class="member-role">Lead Vocals & Guitar</div>
+                        <div class="member-bio">
+                            <p>Der Künstler, der Leader der Band und der Mann, der die Fäden im Hintergrund zieht.</p>
+                            
+                            <p>Wenn es einen Mann gibt, dessen kompositorischen Fähigkeiten grenzenlos erscheinen, dann ist er es. Mit wahrlich unendlicher Kreativität und Vision schreibt er wundervolle Melodien, die sich sofort in die Herzen der Menschen singen.</p>
+                            
+                            <p>Doch nicht nur in der Komposition liegen seine Talente. Die schnellsten Finger im Westen sind die seiner linken Hand, wenn er wie eine Spinne über das Griffbrett seiner Gitarre galoppiert und die Zuhörer mit seinen unglaublichen Gitarrensolos in den Bann zieht. Eine nie dagewesene Kunst mit einer Mischung aus graziler Technik, wunderschönen Melodien und einem Fingerspitzengefühl, welches sein Instrument zum singen bringt.</p>
+                            
+                            <p>Nicht zuletzt erglänzt sein braun güldenes Haar im Licht der Scheinwerfer und schwingt im Wind wie die Mähne eines Löwen. Sein Feuer brennt stark wenn er den ersten Ton seiner E Gitarre aus dem laut aufgedrehten Amp hört und weiß, dass er mit seinem Rock die Herzen der Menschen befreien wird.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2: Tristan Trizzler -->
+            <div class="member-card fade-in">
+                <div class="member-content">
+                    <div class="member-image-wrapper">
+                        <img src="trizzl@2x.png" alt="Tristan Trizzler" class="member-image">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Tristan „Trizzler" Monscheuer</h3>
+                        <div class="member-role">Piano & Keys</div>
+                        <div class="member-bio">
+                            <p>Als die Sonne im Zenit stand und die Vögel im Einklang mit der Natur ihren Weg gen Süden fanden, gebart dieser junge Mann und erblickte das Licht der Welt.</p>
+                            
+                            <p>Ein Genie von unvergleichlicher Größe, wie es uns einst auch Künstler wie Mozart und Beethoven zeigten, welches mit größter Präzision über die Tasten seines Pianos fliegt.</p>
+                            
+                            <p>Mit einer Leichtigkeit und Finesse schafft er es uns in seinen Bann zu ziehen wenn es darum geht den leisen, zauberhaften Gesang der Musik erklingen zu lassen.</p>
+                            
+                            <p>Schon mit jungen Jahren begann Tristan alias „Trizzler" Klavier zu spielen und fand nun den Weg in die Live Band von Mayz Kuro. Ein alter Schulfreund des Künstlers, die bereits damals zusammen auf der Bühne standen und mit ihren einzigartigen Herangehensweisen das Publikum verzauberten.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3: Livius Starreporter -->
+            <div class="member-card fade-in">
+                <div class="member-content">
+                    <div class="member-image-wrapper">
+                        <img src="li@2x.png" alt="Livius Kahlo" class="member-image">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Livius „Starreporter" Kahlo</h3>
+                        <div class="member-role">Bass Guitar</div>
+                        <div class="member-bio">
+                            <p>Fingerfertigkeit, Coolness und einen einzigartigen Stil wenn es um Mode geht - Livius „Lee" Liviu „Starreporter" Kahlo.</p>
+                            
+                            <p>Wenn es einen Mann gibt, der es schafft durch bloßes Herumstehen die größte Coolness auf der Bühne auszustrahlen, dann er.</p>
+                            
+                            <p>Ein treuer Gefährte, der immerzu da ist und seine Hilfe anbietet wenn sie gebraucht wird. Ein Mann, der hingebungsvoll und selbstlos seine Kollegen unterstützt.</p>
+                            
+                            <p>Seine Finger fliegen mit größtem Groove und einer nie da gewesenen Gelassenheit über die Bünde seines Basses. Er ist der Mann für die tiefen Töne und breitet sich mit seiner Aura über die komplette Spielfläche der großen Bühnen aus. Obwohl er aus dem Hintergrund agiert, bildet er die Plattform, auf welcher der Groove seiner Band aufbauen und bestehen kann.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 4: Jan Die Maschine -->
+            <div class="member-card fade-in">
+                <div class="member-content">
+                    <div class="member-image-wrapper">
+                        <img src="jan@2x.png" alt="Jan Neumann" class="member-image">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Jan „Die Maschine" Neumann</h3>
+                        <div class="member-role">Drums & Backing Vocals</div>
+                        <div class="member-bio">
+                            <p>In der dunkelsten Nacht, als jegliche Hoffnung verloren war, brauchte es einen Helden, einen Helden von großer Stärke.</p>
+                            
+                            <p>Mit geballter Kraft und einem unbändigen Feuer spielt er die Drums, die das Zwerchfell seiner Zuhörer zum Beben bringen. Der Rhythmus in seinem Blut führt zu treibenden Rhythmen, die die Massen mitreißen und begeistern. Nicht selten überrascht er mit seinen improvisierten, schnellen Fills sowohl die Fans als auch seine eigenen Bandmitglieder und zaubert ihnen ein Lächeln aufs Gesicht.</p>
+                            
+                            <p>Ein wahres Naturtalent, welches seines gleichen sucht. Denn er spielt wie ein Profi, obwohl er erst seit kurzer Zeit sein Instrument bedient. Auch seine Engelsgleiche, aber kernige Rock Stimme bringt er gerne zum Ausdruck während er die Zweitstimmen im Gesang übernimmt.</p>
+                            
+                            <p>Ein Mann für alle Fälle, der jede Position besetzt, die benötigt wird und auch durch seine pure Muskelkraft und körperliche Ausdauer immer wieder überzeugt wenn es darum geht schweres Equipment für die Band zu transportieren.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.instagram.com/mayz.kuro/?hl=de" target="_blank" aria-label="Instagram">IG</a>
+                <a href="https://open.spotify.com/intl-de/artist/3w3SlNvM9YCfdHjqH5hzfr" target="_blank" aria-label="Spotify">SP</a>
+                <a href="https://www.youtube.com/channel/UCLaZcdXPg0s7bm5Hjr2PIdg" target="_blank" aria-label="YouTube">YT</a>
+                <a href="https://www.twitch.tv/mayzkuro" target="_blank" aria-label="Twitch">TW</a>
+            </div>
+            <p class="footer-text">© 2024 Mayz Kuro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+    </script>
+</body>
+</html>
